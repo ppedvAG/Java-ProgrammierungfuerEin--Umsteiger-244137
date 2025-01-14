@@ -52,12 +52,11 @@ public class Main {
         int countZug, countSchiff;
         countZug=0; countSchiff =0;
         for(int i =0; i<10; i++) {
-            if(zufallsFahrzeuge[i].getClass()== Zug.class) {
-                countZug++;
-            } else if (zufallsFahrzeuge[i].getClass()== Schiff.class) {
-                countSchiff++;
+            switch (zufallsFahrzeuge[i].getClass().getName()) {
+                case "tag2.Zug": countZug++; break;
+                case "tag2.Schiff": countSchiff++; break;
             }
-            System.out.println("Position: "+(i+1)+"\t"+zufallsFahrzeuge[i].Info());
+            System.out.println("Position: "+(i+1)+"\t\t"+zufallsFahrzeuge[i].Info());
         }
         System.out.println("Schiffe: "+countSchiff);
         System.out.println("Züge: "+countZug);
