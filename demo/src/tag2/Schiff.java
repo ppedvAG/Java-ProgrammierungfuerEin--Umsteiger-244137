@@ -1,7 +1,7 @@
 package tag2;
 
 public class Schiff extends Fahrzeug{
-    private double tiefgang;
+    private double tiefgang = 0;
 
     public double getTiefgang() {
         return tiefgang;
@@ -16,8 +16,17 @@ public class Schiff extends Fahrzeug{
         this.tiefgang = tiefgang;
     }
 
+    public Schiff(String name) {
+        super(name);
+    }
+
     @Override
     public String Info() {
         return "Das Fahrzeug ist ein Schiff. "+ super.Info()+ " Der Tiefgang ist "+tiefgang+"m.";
+    }
+
+    @Override
+    public void Hupen() {
+        System.out.println("Schiff hupt!");
     }
 }

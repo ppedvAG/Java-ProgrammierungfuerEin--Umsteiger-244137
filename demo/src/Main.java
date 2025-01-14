@@ -1,8 +1,5 @@
 
-import tag2.Fahrzeug;
-import tag2.Hund;
-import tag2.Lebewesen;
-import tag2.Schiff;
+import tag2.*;
 
 import java.util.Scanner;
 
@@ -10,9 +7,8 @@ public class Main {
 //-- TAG 2 -------------------------------------------------------------------------------------------------------------
     public static void main(String[] args) {
 // lab 006
-        String beispiel;
 
-        //Deklaration einer Fahrzeug-Variablen und Initialisierung mittels einer Fahrzeug-Instanz
+       /* //Deklaration einer Fahrzeug-Variablen und Initialisierung mittels einer Fahrzeug-Instanz
         Fahrzeug fz1 = new Fahrzeug("Mercedes", 190, 23000);
         //Ausführen der Info()-Methode des Fahrzeugs und Ausgabe in der Konsole
         System.out.println(fz1.Info() + "\n");
@@ -39,15 +35,33 @@ public class Main {
             fahrzeuge[i] = new Fahrzeug("fahrzeug"+i, 20*i, 5000*i);
         }
         // die Anzahl der erstellten Fahrzeuge wird mithilfe der statischen Methode Fahrzeug.getAnzahlFahrzeuge() ausgegeben
-        System.out.println(Fahrzeug.getAnzahlFahrzeuge());
-
+        System.out.println(Fahrzeug.getAnzahlFahrzeuge());*/
+// demo 008
         Schiff schiff = new Schiff("Titanic", 70, 5000000, 9);
         System.out.println(schiff.Info());
 
-
+//demo 009
         Lebewesen hund = new Hund();
         hund.setAlter(7);
         System.out.println("Der hund ist so alt: "+hund.getAlter());
+// lab 009
+        Fahrzeug[] zufallsFahrzeuge= new Fahrzeug[10];
+        for(int i =0; i<10; i++) {
+            zufallsFahrzeuge[i] = Fahrzeug.GeneriereFahrzeug("zufallsFahrzeug");
+        }
+        int countZug, countSchiff;
+        countZug=0; countSchiff =0;
+        for(int i =0; i<10; i++) {
+            if(zufallsFahrzeuge[i].getClass()== Zug.class) {
+                countZug++;
+            } else if (zufallsFahrzeuge[i].getClass()== Schiff.class) {
+                countSchiff++;
+            }
+            System.out.println("Position: "+(i+1)+"\t"+zufallsFahrzeuge[i].Info());
+        }
+        System.out.println("Schiffe: "+countSchiff);
+        System.out.println("Züge: "+countZug);
+        zufallsFahrzeuge[2].Hupen();
     }
 
 //-- TAG 1 -------------------------------------------------------------------------------------------------------------

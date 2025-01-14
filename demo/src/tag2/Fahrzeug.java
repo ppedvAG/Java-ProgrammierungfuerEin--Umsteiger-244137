@@ -1,12 +1,14 @@
 package tag2;
 
-public class Fahrzeug {
+import java.util.Random;
+
+public abstract class Fahrzeug {
     //Properties
     private String Name;
-    private int MaxGeschwindigkeit;
-    private int AktGeschwindigkeit;
-    private double Preis;
-    private boolean MotorLaeuft;
+    private int MaxGeschwindigkeit = 0;
+    private int AktGeschwindigkeit = 0;
+    private double Preis = 0;
+    private boolean MotorLaeuft = false;
     // statische Int-Property für die Anzahl der erzeugten Fahrzeuge
     private static int anzahlFahrzeuge = 0;
 
@@ -53,6 +55,11 @@ public class Fahrzeug {
 
         // Jedes mal, wenn der Konstruktor aufgerufen wird (ein neues Fahrzeug erzeugt wird),
         // wird die Anzahl der Fahrzeuge um 1 erhöht
+        anzahlFahrzeuge++;
+    }
+
+    public Fahrzeug(String name) {
+        Name = name;
         anzahlFahrzeuge++;
     }
 
@@ -110,4 +117,17 @@ public class Fahrzeug {
     public static String getAnzahlFahrzeuge() {
         return "Es wurden bereits "+anzahlFahrzeuge+" Fahrzeuge erzeugt.";
     }
+
+    public abstract void Hupen();
+
+    public static Fahrzeug GeneriereFahrzeug(String name) {
+        Random random = new Random();
+        int zufallsZahl=random.nextInt((2-1)+1)+1;
+        switch (zufallsZahl) {
+            case 1: return new Schiff(name);
+            case 2: return new Zug(name);
+            default: return null;
+        }
+    }
+
 }
