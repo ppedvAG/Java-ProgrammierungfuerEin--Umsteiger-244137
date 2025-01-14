@@ -1,5 +1,8 @@
 
 import tag2.Fahrzeug;
+import tag2.Hund;
+import tag2.Lebewesen;
+import tag2.Schiff;
 
 import java.util.Scanner;
 
@@ -28,7 +31,7 @@ public class Main {
         fz1.Beschleunige(-500);
         fz1.StoppeMotor();
         System.out.println(fz1.Info() + "\n");
-Math.random();
+
         //Array von Fahrzeugen mit der Länge 10 wird erstellt.
         Fahrzeug[] fahrzeuge= new Fahrzeug[10];
         for(int i =0; i<10; i++) {
@@ -38,7 +41,13 @@ Math.random();
         // die Anzahl der erstellten Fahrzeuge wird mithilfe der statischen Methode Fahrzeug.getAnzahlFahrzeuge() ausgegeben
         System.out.println(Fahrzeug.getAnzahlFahrzeuge());
 
+        Schiff schiff = new Schiff("Titanic", 70, 5000000, 9);
+        System.out.println(schiff.Info());
 
+
+        Lebewesen hund = new Hund();
+        hund.setAlter(7);
+        System.out.println("Der hund ist so alt: "+hund.getAlter());
     }
 
 //-- TAG 1 -------------------------------------------------------------------------------------------------------------
