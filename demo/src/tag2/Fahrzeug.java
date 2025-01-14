@@ -2,11 +2,13 @@ package tag2;
 
 public class Fahrzeug {
     //Properties
-    public String Name;
-    public int MaxGeschwindigkeit;
-    public int AktGeschwindigkeit;
-    public double Preis;
-    public boolean MotorLaeuft;
+    private String Name;
+    private int MaxGeschwindigkeit;
+    private int AktGeschwindigkeit;
+    private double Preis;
+    private boolean MotorLaeuft;
+    // statische Int-Property für die Anzahl der erzeugten Fahrzeuge
+    private static int anzahlFahrzeuge = 0;
 
     //Getter and Setter
     public String getName() {
@@ -48,6 +50,10 @@ public class Fahrzeug {
         this.Preis = preis;
         this.AktGeschwindigkeit = 0;
         this.MotorLaeuft = false;
+
+        // Jedes mal, wenn der Konstruktor aufgerufen wird (ein neues Fahrzeug erzeugt wird),
+        // wird die Anzahl der Fahrzeuge um 1 erhöht
+        anzahlFahrzeuge++;
     }
 
     //Methode zur Ausgabe von Objektinformationen
@@ -99,5 +105,9 @@ public class Fahrzeug {
 
             System.out.println(this.Name+" bewegt sich jetzt mit "+this.AktGeschwindigkeit+"km/h");
         }
+    }
+
+    public static String getAnzahlFahrzeuge() {
+        return "Es wurden bereits "+anzahlFahrzeuge+" Fahrzeuge erzeugt.";
     }
 }

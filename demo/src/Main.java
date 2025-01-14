@@ -7,6 +7,8 @@ public class Main {
 //-- TAG 2 -------------------------------------------------------------------------------------------------------------
     public static void main(String[] args) {
 // lab 006
+        String beispiel;
+
         //Deklaration einer Fahrzeug-Variablen und Initialisierung mittels einer Fahrzeug-Instanz
         Fahrzeug fz1 = new Fahrzeug("Mercedes", 190, 23000);
         //Ausführen der Info()-Methode des Fahrzeugs und Ausgabe in der Konsole
@@ -26,6 +28,16 @@ public class Main {
         fz1.Beschleunige(-500);
         fz1.StoppeMotor();
         System.out.println(fz1.Info() + "\n");
+Math.random();
+        //Array von Fahrzeugen mit der Länge 10 wird erstellt.
+        Fahrzeug[] fahrzeuge= new Fahrzeug[10];
+        for(int i =0; i<10; i++) {
+            //Bei jedem Schleifendurchlauf wird ein neues Fahrzeug erstellt und in das Array gespeichert.
+            fahrzeuge[i] = new Fahrzeug("fahrzeug"+i, 20*i, 5000*i);
+        }
+        // die Anzahl der erstellten Fahrzeuge wird mithilfe der statischen Methode Fahrzeug.getAnzahlFahrzeuge() ausgegeben
+        System.out.println(Fahrzeug.getAnzahlFahrzeuge());
+
 
     }
 
