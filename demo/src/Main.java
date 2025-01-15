@@ -1,10 +1,11 @@
+import packageJavaGrundkurs.*;
 
-import tag2.*;
-
-import java.util.Scanner;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Random;
 
 public class Main {
-//-- TAG 2 -------------------------------------------------------------------------------------------------------------
+    //-- TAG 2 -------------------------------------------------------------------------------------------------------------
     public static void main(String[] args) {
 // lab 006
 
@@ -37,7 +38,7 @@ public class Main {
         // die Anzahl der erstellten Fahrzeuge wird mithilfe der statischen Methode Fahrzeug.getAnzahlFahrzeuge() ausgegeben
         System.out.println(Fahrzeug.getAnzahlFahrzeuge());*/
 // demo 008
-        Schiff schiff = new Schiff("Titanic", 70, 5000000, 9);
+        /*Schiff schiff = new Schiff("Titanic", 70, 5000000, 9);
         System.out.println(schiff.Info());
 
 //demo 009
@@ -53,24 +54,88 @@ public class Main {
         countZug=0; countSchiff =0;
         for(int i =0; i<10; i++) {
             switch (zufallsFahrzeuge[i].getClass().getName()) {
-                case "tag2.Zug": countZug++; break;
-                case "tag2.Schiff": countSchiff++; break;
+                case "packageJavaGrundkurs.Zug": countZug++; break;
+                case "packageJavaGrundkurs.Schiff": countSchiff++; break;
             }
             System.out.println("Position: "+(i+1)+"\t\t"+zufallsFahrzeuge[i].Info());
         }
         System.out.println("Schiffe: "+countSchiff);
         System.out.println("Züge: "+countZug);
-        zufallsFahrzeuge[2].Hupen();
+        zufallsFahrzeuge[2].Hupen();*/
+
+//        Container container = new Container();
+//        Schiff schiff = new Schiff("Titanic");
+//        Zug zug = new Zug("Westbahn");
+//        Object beladenesObjekt = beladeWennBeladbar(zug, schiff);
+//        if(beladenesObjekt instanceof Schiff) {
+//            System.out.println(((Schiff) beladenesObjekt).Info());
+//        } else if(beladenesObjekt instanceof Container) {
+//            System.out.println("Container ist beladen mit "+((Container) beladenesObjekt).getBeleadenesFahrzeug().getName());
+//        }
+
+//        String stringMit0 = "liji 0 lkjlkj";
+//        if(stringMit0.contains("0")) {
+//            try {
+//                Random random = new Random();
+//                if(random.nextBoolean()) {
+//                    throw new stringContains0Exception(stringMit0);
+//                }
+//            } catch (stringContains0Exception e) {
+//                System.out.println(e.getMessage());;
+//            } finally {
+//                System.out.println("programm beendet");
+//            }
+//        }
+
+
+// lab 14 collecitons
+        Zugverkauf zugverkauf = new Zugverkauf("Fridas Zugverkauf");
+        zugverkauf.addZug(new Zug("meinZug", 100, 15, 1));
+        for (int i = 1; i < 11; i++) {
+            Random random = new Random();
+            Zug neuerZug = new Zug("zug" + i, 30 * i, random.nextInt(10000000), i);
+            zugverkauf.addZug(neuerZug);
+        }
+        for (int i = 0; i < zugverkauf.getZugkatalog().size(); i++) {
+            System.out.println(zugverkauf.getZugkatalog().get(i).Info());
+        }
+//        zugverkauf.removeZug("meinZug", 15);
+//        for (int i = 0; i < zugverkauf.getZugkatalog().size(); i++) {
+//            System.out.println(zugverkauf.getZugkatalog().get(i).Info());
+//        }
+//        zugverkauf.sortZuege();
+//        for (int i = 0; i < zugverkauf.getZugkatalog().size(); i++) {
+//            System.out.println(zugverkauf.getZugkatalog().get(i).Info());
+//        }
+
     }
 
-//-- TAG 1 -------------------------------------------------------------------------------------------------------------
+    public static Object beladeWennBeladbar(Object o1, Object o2) {
+        if (o1 instanceof IBeladbar && o2 instanceof Fahrzeug) {
+            ((IBeladbar) o1).Belade((Fahrzeug) o2);
+            if (o1 instanceof Container) {
+                System.out.println("Container ist beladen mit " + ((Container) o1).getBeleadenesFahrzeug().getName());
+            } else {
+                System.out.println(((Fahrzeug) o1).Info());
+            }
+            return o1;
+        } else if (o2 instanceof IBeladbar && o1 instanceof Fahrzeug) {
+            ((IBeladbar) o2).Belade((Fahrzeug) o1);
+            if (o2 instanceof Container) {
+                System.out.println("Container ist beladen mit " + ((Container) o2).getBeleadenesFahrzeug().getName());
+            } else {
+                System.out.println(((Fahrzeug) o2).Info());
+            }
+            return o2;
+        }
+        return null;
+    }
+
+    //-- TAG 1 -------------------------------------------------------------------------------------------------------------
 // lab 004
     //Enum-Definition für lab 004
-    /*enum Rechenoperation {
-        ADDITION(1, "Addition"),
-        SUBTRAKTION(2, "Subtraktion"),
-        MULTIPLIKATION(3, "Multiplikation"),
-        DIVISION(4, "Division");
+    enum Rechenoperation {
+        ADDITION(1, "Addition"), SUBTRAKTION(2, "Subtraktion"), MULTIPLIKATION(3, "Multiplikation"), DIVISION(4, "Division");
 
         private final int id;
         private final String description;
@@ -87,7 +152,7 @@ public class Main {
         public String getDescription() {
             return description;
         }
-    }
+    }/*
     // main Methode
     public static void main(String[] args) {
         // demo
@@ -339,24 +404,27 @@ public class Main {
 
         return operation;
     }
+*/
 
-    static double Berechne(double x, double y, Rechenoperation op)
-    {
-        switch (op)
-        {
+    public static double Calculate(double x, double y, Rechenoperation op) {
+        switch (op) {
             case Rechenoperation.ADDITION:
                 return x + y;
             case Rechenoperation.SUBTRAKTION:
                 return x - y;
             case Rechenoperation.MULTIPLIKATION:
                 return x * y;
-            case Rechenoperation.DIVISION:
-                return y != 0 ? x / y : Double.NaN;
+            case Rechenoperation.DIVISION: {
+                if (y == 0) {
+                    throw new ArithmeticException("Durch Null Dividiert");
+                } else return x / y;
+            }
             default:
                 return Double.NaN;
         }
-    }
 
+    }
+/*
     static String ConvertRechenoperation(Rechenoperation op)
     {
         switch (op)
@@ -373,4 +441,5 @@ public class Main {
                 return "";
         }
     }*/
+
 }

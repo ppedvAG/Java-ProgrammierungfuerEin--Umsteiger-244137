@@ -1,4 +1,4 @@
-package tag2;
+package packageJavaGrundkurs;
 
 public class Hund extends Lebewesen{
     private int alter=0;

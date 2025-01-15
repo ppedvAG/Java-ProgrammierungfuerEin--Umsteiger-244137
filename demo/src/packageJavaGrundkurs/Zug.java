@@ -1,6 +1,6 @@
-package tag2;
+package packageJavaGrundkurs;
 
-public class Zug extends Fahrzeug{
+public class Zug extends Fahrzeug {
     private int anzWagons = 0;
 
     public int getAnzWagons() {
@@ -28,4 +28,7 @@ public class Zug extends Fahrzeug{
     public void Hupen() {
         System.out.println("Zug hupt!");
     }
+
+
+
 }

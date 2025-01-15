@@ -1,4 +1,4 @@
-package tag2;
+package packageJavaGrundkurs;
 
 import java.util.Random;
 

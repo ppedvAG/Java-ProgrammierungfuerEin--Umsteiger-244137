@@ -1,4 +1,4 @@
-package tag2;
+package packageJavaGrundkurs;
 // abstrakte Klasse Lebewesen
 public abstract class Lebewesen {
     public abstract int getAlter();
