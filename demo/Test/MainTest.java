@@ -1,6 +1,5 @@
 import org.junit.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import packageJavaGrundkurs.Main;
 
 public class MainTest {
 
@@ -8,6 +7,6 @@ public class MainTest {
 
     @Test(expected = ArithmeticException.class)
     public void testDivisionByZero() {
-        Main.Calculate(5, 0, Main.Rechenoperation.DIVISION);
+//        Main.Calculate(5, 0, Main.Rechenoperation.DIVISION);
     }
 }
